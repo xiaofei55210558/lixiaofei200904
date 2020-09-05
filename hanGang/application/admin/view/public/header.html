@@ -1,0 +1,21 @@
+  <div class="layui-header layui-bg-green">
+      <div class="layui-row">
+        <div class="layui-col-xs8 layui-col-sm10 layui-col-md10" >
+          <!-- 头部区域（可配合layui已有的水平导航） -->
+
+          <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+              <a href="javascript:;">
+                欢迎你, {{$Think.session.admin.user_name}}
+              </a>
+            </li>
+            {{if condition="session('?admin')"}}
+            <li class="layui-nav-item"><a href="{{:url('admin/admin/logout')}}">退出<span class="layui-badge-dot"></span></a></li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+  </div>
+
+
+

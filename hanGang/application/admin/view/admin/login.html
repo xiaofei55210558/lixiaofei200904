@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>邯刚超管后台系统</title>
+    <link rel="icon" type="image/png" href="__CSS__/common/kache.png"/>
+    {{load file="__CSS__/login/login.css"}}
+
+
+</head>
+<body class="page-login">
+
+  <div class=" box">
+    <div class="flex">
+      <div class="container">
+
+            <div class="login-content">
+                <div class="brand">
+                    <img alt="logo" class="brand-img"  src="__CSS__/login/logo.png">
+                    <h2 class="brand-text">邯刚超管后台登录</h2>
+                </div>
+                <form id="login-form" action="{{:url('admin/admin/doLogin')}}"  method="post" class="login-form">
+                    <div class="form-group">
+                        <input class="" name="user_name" placeholder="请输入用户名" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="" name="password" placeholder="请输入密码" type="password" required>
+                    </div>
+                    <div class="but">
+                        <button type="submit" >
+                            登 录
+                        </button>
+                    </div>
+                </form>
+            </div>
+       </div>
+    </div>
+    </div>
+</body>
+</html>

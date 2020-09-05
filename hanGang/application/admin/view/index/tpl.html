@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>think模板引擎</title>
+</head>
+<body>
+
+<h1>think模板引擎</h1>
+
+{{// 这里是注释,你看不见我}}
+{{$hi}}<br>
+{{$user['username']}}, {{$user.created}}<br>
+{{$obj->username}}, {{$obj:created}}<br>
+{{$obj->created|date="Y-m-d H:i:s",###}}<br>
+
+转成大写: {{$hi|strtoupper}}<br>
+转成小写: {{$hi|strtolower}}<br>
+首字母大写: {{$hi|ucfirst}}<br>
+{{$obj->nickname}}<br>
+{{$obj->nickname|mb_substr=1}}<br>
+
+TP的版本号:{{$Think.THINK_VERSION}}<br>
+{{// get中有参数才能取到?username=张大民 }}
+{{$Think.get.username}}<br>
+{{$Think.config.default_controller}}<br>
+{{$Think.config.paginate.type}}<br>
+{{$Think.config.paginate.list_rows}}<br>
+{{$Request.module}}/{{$Request.controller}}/{{$Request.action}}<br>
+
+{{$Think.config.app_debug ? "调试模式已开启" : "调试模式已关闭"}}<br>
+
+{{if condition="$Think.config.app_trace"}}
+追踪窗口已开启
+{{else /}}
+追踪窗口已关闭
+{{/if}}
+
+<table>
+	<tr>
+		<td>用户名</td>
+		<td>昵称</td>
+		<td>时间</td>
+	</tr>
+	{{volist name="users" id="vo"}}
+	<tr {{if condition="$key == 0"}}style="background-color: #DDFFBB;"{{/if}} >
+		<td>[{{$key}}] {{$vo.username}}</td>
+		<td>{{$vo.nickname}}</td>
+		<td>{{$vo.created|date="Y-m-d H:i:s", ###}}</td>
+	</tr>
+	{{/volist}}
+</table>
+
+<br>
+<h3>模板中调用PHP的函数</h3>
+{{:strtoupper($hi)}}<br>
+{{:strtolower($hi)}}<br>
+
+<br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

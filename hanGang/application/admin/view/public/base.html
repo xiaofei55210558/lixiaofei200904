@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>邯刚超管后台系统</title>
+    <link rel="icon" type="image/png" href="__CSS__/common/kache.png"/>
+    {{load file="__CSS__/layui-v2.5.4/layui/css/layui.css"}}
+    {{load file="__CSS__/layui-v2.5.4/layui/layui.js"}}
+    {{load file="__JS__/jquery.js"}}
+    {{block name="css"}}{{/block}}
+
+    <style type="text/css">
+    .layui-layout-body{
+      background: #ecf0f5;
+    }
+    .bottom{
+      margin-top: 2em;
+    }
+    .app-content{
+      display: flex;
+      max-width: 1200px;
+      margin: 2em auto 0 auto;
+      transition: all 0.4s ease-in-out;
+      position: relative;
+    }
+    .tree{
+      display: block;
+      left: 160px;
+      width: 200px;
+      flex-basis: 200px;
+      padding:20px 0px;
+    }
+    .app-content .cont{
+      display:block;
+      margin-left: 2em;
+      padding: 20px;
+      flex-basis: calc(100%-200px);
+      width: calc(100% - 200px);
+      background: #fff;
+    }
+    .footer{
+      text-align: center;
+      padding: 1em;
+      color: #777;
+    }
+    .add-icon{
+      display: inline-block;
+      font: normal normal normal 1.6rem/1 FontAwesome,sans-serif;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      transform: translate(0,0);
+      content:'\f067';
+      box-sizing: border-box;
+      font-weight: 700px;
+    }
+    .app-danger{
+      color: red;
+    }
+    .app-danger:hover{
+      border:1px solid red;
+    }
+    .app-primary{
+      color: #009688;
+    }
+  </style>
+</head>
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+
+    <!-- 头部 -->
+
+    {{include file="public/header"}}
+
+    <!-- 中间内容 -->
+    <div class="app-content">
+      <!-- 左侧 -->
+      <div class="tree">{{include file="public/tree"}}</div>
+
+      <!-- 内容 -->
+      <div class="cont">{{block name="content"}}{{/block}}</div>
+    </div>
+ 
+
+    <!-- 底部 -->
+    <div class="footer">
+        <!-- 底部固定区域 -->
+          {{include file="public/footer"}}     
+    </div>
+  </div>
+
+  {{block name="js"}}{{/block}}
+  <script>
+ 
+    layui.use('element', function(){
+      var element = layui.element;
+ 
+    });
+  </script>
+
+  <script>
+    $(function () {
+    // 左侧高改变
+      console.log(String(parseInt($('.cont').css('height')))+'px');
+
+      if (parseInt($('.cont').css('height'))>260) {
+        $('.tree').css({
+          'background-color':'#009688',
+          'height':String(parseInt($('.cont').css('height')))+'px'
+          })
+        }
+    })
+  </script>
+
+ 
+</body>
+</html>
